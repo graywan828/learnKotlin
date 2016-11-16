@@ -21,7 +21,6 @@ class SimpleTestActivity : AppCompatActivity() {
 
     }
 
-
     fun add(x:Int,y:Int):Int{
         return x + y
     }
