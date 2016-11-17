@@ -9,12 +9,18 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.wochacha.learnkotlin.MainActivity">
+    tools:context="com.wochacha.learnkotlin.ui.MainActivity">
 
     <Button
         android:id="@+id/btn_simple"
         android:layout_width="wrap_content"
         android:text="简单测试"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_request"
+        android:text="网络请求测试"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

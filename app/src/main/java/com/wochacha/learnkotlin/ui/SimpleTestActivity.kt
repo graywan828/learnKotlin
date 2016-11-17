@@ -1,8 +1,9 @@
-package com.wochacha.learnkotlin
+package com.wochacha.learnkotlin.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.wochacha.learnkotlin.R
 import kotlinx.android.synthetic.main.activity_simple_test.*
 
 class SimpleTestActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class SimpleTestActivity : AppCompatActivity() {
 
     fun showToast(msg:String,
                   tag:String = javaClass.simpleName,
-                  time:Int=Toast.LENGTH_SHORT){
+                  time:Int= Toast.LENGTH_SHORT){
         Toast.makeText(this,"$msg  $tag",time).show()
     }
 }
