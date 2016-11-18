@@ -21,7 +21,7 @@ class WeatherListAdapter(val items:List<Weather>)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+        holder.bindWeather(items[position])
     }
 
     override fun getItemCount(): Int = items.size
@@ -30,7 +30,10 @@ class WeatherListAdapter(val items:List<Weather>)
         fun bindWeather(weather : Weather){
             Glide.with(itemView.context).load(weather.weather_icon).into(itemView.ivIconFrom)
             Glide.with(itemView.context).load(weather.weather_icon1).into(itemView.ivIconTo)
-
+            itemView.tvDays.text = weather.days
+            itemView.tvWeek.text = weather.week
+            itemView.tvHighTemperature.text = "${weather.temp_high}℃"
+            itemView.tvLowTemperature.text = "${weather.temp_low}℃"
         }
     }
 

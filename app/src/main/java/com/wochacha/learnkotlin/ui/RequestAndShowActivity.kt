@@ -3,15 +3,22 @@ package com.wochacha.learnkotlin.ui
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.Toolbar
 import com.wochacha.learnkotlin.R
 import com.wochacha.learnkotlin.data.server.WeatherRequest
+import com.wochacha.learnkotlin.domain.model.WeatherResult
 import com.wochacha.learnkotlin.ui.adapters.WeatherListAdapter
 import kotlinx.android.synthetic.main.activity_request_and_show.*
 import org.jetbrains.anko.async
-import org.jetbrains.anko.longToast
+import org.jetbrains.anko.find
 import org.jetbrains.anko.uiThread
 
-class RequestAndShowActivity : AppCompatActivity() {
+class RequestAndShowActivity : AppCompatActivity() ,ToolBarManager {
+    override val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
+
+    override fun enableHomeAsUp() {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     val context = this
     private val items = listOf<String>(
@@ -29,14 +36,23 @@ class RequestAndShowActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_and_show)
 
-        rvWeather.layoutManager = LinearLayoutManager(this)
-        rvWeather.adapter = WeatherListAdapter(items)
+        initToolbar()
 
-        async() {
-            WeatherRequest("上海").execute()
-            uiThread {
-                longToast("网络请求测试")
-            }
+        rvWeather.layoutManager = LinearLayoutManager(this)
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadWeather()
+    }
+
+    private fun loadWeather() = async() {
+        val weatherResult:WeatherResult = WeatherRequest("上海").execute()
+        uiThread {
+            rvWeather.adapter = WeatherListAdapter(weatherResult.result)
+//                longToast("网络请求测试")
         }
     }
 }

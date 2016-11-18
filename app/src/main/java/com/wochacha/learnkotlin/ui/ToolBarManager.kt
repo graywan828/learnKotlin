@@ -25,4 +25,6 @@ interface ToolBarManager{
             }
         }
     }
+
+    fun enableHomeAsUp()
 }
