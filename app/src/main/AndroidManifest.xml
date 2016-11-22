@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.SimpleTestActivity" />
-        <activity android:name=".ui.RequestAndShowActivity"/>
+        <activity android:name=".ui.RequestAndShowActivity" />
+        <activity android:name=".ui.SettingActivity"></activity>
     </application>
 
 </manifest>
