@@ -28,12 +28,14 @@ class WeatherListAdapter(val items:List<Weather>)
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         fun bindWeather(weather : Weather){
-            Glide.with(itemView.context).load(weather.weather_icon).into(itemView.ivIconFrom)
-            Glide.with(itemView.context).load(weather.weather_icon1).into(itemView.ivIconTo)
-            itemView.tvDays.text = weather.days
-            itemView.tvWeek.text = weather.week
-            itemView.tvHighTemperature.text = "${weather.temp_high}℃"
-            itemView.tvLowTemperature.text = "${weather.temp_low}℃"
+            with(weather) {
+                Glide.with(itemView.context).load(weather_icon).into(itemView.ivIconFrom)
+                Glide.with(itemView.context).load(weather_icon1).into(itemView.ivIconTo)
+                itemView.tvDays.text = days
+                itemView.tvWeek.text = week
+                itemView.tvHighTemperature.text = "${temp_high}℃"
+                itemView.tvLowTemperature.text = "${temp_low}℃"
+            }
         }
     }
 
